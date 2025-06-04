@@ -1,0 +1,27 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-py"
+  output   = "../prisma/client"
+}
+
+model Artesao {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  email         String    @unique
+  senha         String
+  data_cadastro DateTime  @default(now())
+  produtos      Produto[] @relation("artesao_id")
+}
+
+model Produto {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  descricao     String
+  preco         Float
+  data_cadastro DateTime  @default(now())
+  Artesao       Artesao[] @relation("artesao_id")
+}
