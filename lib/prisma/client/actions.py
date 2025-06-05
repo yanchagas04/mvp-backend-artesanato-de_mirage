@@ -592,11 +592,11 @@ class ArtesaoActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second Artesao record ordered by the data_cadastro field
+        # find the second Artesao record ordered by the dataCadastro field
         artesao = await Artesao.prisma().find_first_or_raise(
             skip=1,
             order={
-                'data_cadastro': 'desc',
+                'dataCadastro': 'desc',
             },
         )
         ```
@@ -1211,6 +1211,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
                 'nome': 'bghffegacj',
                 'descricao': 'bhghchehcc',
                 'preco': 326272115.134320,
+                'artesaoId': 675780521,
             },
         )
         ```
@@ -1265,15 +1266,17 @@ class ProdutoActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a Produto record
-                    'nome': 'ghfhiafcb',
-                    'descricao': 'heejgedji',
-                    'preco': 1969681615.111617,
+                    'nome': 'heejgedji',
+                    'descricao': 'bjgjgibgbf',
+                    'preco': 1116175964.86147,
+                    'artesaoId': 1303003706,
                 },
                 {
                     # data to create a Produto record
-                    'nome': 'igbehcbab',
-                    'descricao': 'bdadaadhag',
-                    'preco': 1686638315.200043,
+                    'nome': 'bgiggdidbf',
+                    'descricao': 'caaaedabfc',
+                    'preco': 1868141281.186084,
+                    'artesaoId': 1448521415,
                 },
             ],
             skip_duplicates=True,
@@ -1327,7 +1330,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         ```py
         produto = await Produto.prisma().delete(
             where={
-                'id': 1868141281,
+                'id': 1628650740,
             },
         )
         ```
@@ -1379,7 +1382,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         ```py
         produto = await Produto.prisma().find_unique(
             where={
-                'id': 1860847622,
+                'id': 1249606685,
             },
         )
         ```
@@ -1430,7 +1433,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         ```py
         produto = await Produto.prisma().find_unique_or_raise(
             where={
-                'id': 1448521415,
+                'id': 835903122,
             },
         )
         ```
@@ -1625,11 +1628,11 @@ class ProdutoActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second Produto record ordered by the data_cadastro field
+        # find the second Produto record ordered by the dataCadastro field
         produto = await Produto.prisma().find_first_or_raise(
             skip=1,
             order={
-                'data_cadastro': 'desc',
+                'dataCadastro': 'desc',
             },
         )
         ```
@@ -1682,7 +1685,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         ```py
         produto = await Produto.prisma().update(
             where={
-                'id': 1628650740,
+                'id': 763719779,
             },
             data={
                 # data to update the Produto record to
@@ -1739,19 +1742,21 @@ class ProdutoActions(Generic[_PrismaModelT]):
         ```py
         produto = await Produto.prisma().upsert(
             where={
-                'id': 1249606685,
+                'id': 429995104,
             },
             data={
                 'create': {
-                    'id': 1249606685,
-                    'nome': 'igbehcbab',
-                    'descricao': 'bdadaadhag',
-                    'preco': 1686638315.200043,
+                    'id': 429995104,
+                    'nome': 'bgiggdidbf',
+                    'descricao': 'caaaedabfc',
+                    'preco': 1868141281.186084,
+                    'artesaoId': 1448521415,
                 },
                 'update': {
-                    'nome': 'igbehcbab',
-                    'descricao': 'bdadaadhag',
-                    'preco': 1686638315.200043,
+                    'nome': 'bgiggdidbf',
+                    'descricao': 'caaaedabfc',
+                    'preco': 1868141281.186084,
+                    'artesaoId': 1448521415,
                 },
             },
         )
@@ -1799,7 +1804,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         # update all Produto records
         total = await Produto.prisma().update_many(
             data={
-                'id': 835903122
+                'artesaoId': 1775811865
             },
             where={}
         )
@@ -1863,7 +1868,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         results = await Produto.prisma().count(
             select={
                 '_all': True,
-                'nome': True,
+                'id': True,
             },
         )
         ```
@@ -1930,7 +1935,7 @@ class ProdutoActions(Generic[_PrismaModelT]):
         results = await Produto.prisma().count(
             select={
                 '_all': True,
-                'descricao': True,
+                'nome': True,
             },
         )
         ```
@@ -2070,10 +2075,10 @@ class ProdutoActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group Produto records by preco values
+        # group Produto records by descricao values
         # and count how many records are in each group
         results = await Produto.prisma().group_by(
-            ['preco'],
+            ['descricao'],
             count=True,
         )
         ```

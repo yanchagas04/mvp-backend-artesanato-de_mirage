@@ -6,10 +6,7 @@ class Artesao(BaseModel):
     nome: str
     email: str
     senha: str
-    data_cadastro: datetime
-
-    class Config:
-        orm_mode = True
+    dataCadastro: datetime
 
 class ArtesaoCreateUpdate(BaseModel):
     nome: str

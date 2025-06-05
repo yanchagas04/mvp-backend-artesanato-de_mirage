@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from src.routes.artesao.artesaoRouter import artesaoRouter
+from src.routes.produtos.produtosRouter import produtoRouter
+from src.routes.auth.authRouter import authRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -15,6 +17,8 @@ app.middleware(
 )
 
 app.include_router(artesaoRouter)
+app.include_router(produtoRouter)
+app.include_router(authRouter)
 
 @app.get("/")
 async def root():

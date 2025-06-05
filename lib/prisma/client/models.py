@@ -63,7 +63,7 @@ class Artesao(bases.BaseArtesao):
     nome: _str
     email: _str
     senha: _str
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
     produtos: Optional[List['models.Produto']] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
@@ -196,8 +196,9 @@ class Produto(bases.BaseProduto):
     nome: _str
     descricao: _str
     preco: _float
-    data_cadastro: datetime.datetime
-    Artesao: Optional[List['models.Artesao']] = None
+    dataCadastro: datetime.datetime
+    artesaoId: _int
+    artesao: Optional['models.Artesao'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -360,8 +361,8 @@ _Artesao_fields: Dict['types.ArtesaoKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('data_cadastro', {
-            'name': 'data_cadastro',
+        ('dataCadastro', {
+            'name': 'dataCadastro',
             'is_list': False,
             'optional': False,
             'type': 'datetime.datetime',
@@ -380,7 +381,7 @@ _Artesao_fields: Dict['types.ArtesaoKeys', PartialModelField] = OrderedDict(
 )
 
 _Produto_relational_fields: Set[str] = {
-        'Artesao',
+        'artesao',
     }
 _Produto_fields: Dict['types.ProdutoKeys', PartialModelField] = OrderedDict(
     [
@@ -416,19 +417,27 @@ _Produto_fields: Dict['types.ProdutoKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('data_cadastro', {
-            'name': 'data_cadastro',
+        ('dataCadastro', {
+            'name': 'dataCadastro',
             'is_list': False,
             'optional': False,
             'type': 'datetime.datetime',
             'is_relational': False,
             'documentation': None,
         }),
-        ('Artesao', {
-            'name': 'Artesao',
-            'is_list': True,
+        ('artesaoId', {
+            'name': 'artesaoId',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('artesao', {
+            'name': 'artesao',
+            'is_list': False,
             'optional': True,
-            'type': 'List[\'models.Artesao\']',
+            'type': 'models.Artesao',
             'is_relational': True,
             'documentation': None,
         }),

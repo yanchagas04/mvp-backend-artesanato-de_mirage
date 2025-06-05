@@ -15,7 +15,7 @@ RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
         'produtos': 'Produto',
     },
     'Produto': {
-        'Artesao': 'Artesao',
+        'artesao': 'Artesao',
     },
 }
 

@@ -6,8 +6,10 @@ class Produto(BaseModel):
     nome: str
     descricao: str
     preco: float
-    artesao_id: int
-    data_cadastro: datetime
+    dataCadastro: datetime
+    artesaoId: int
 
-    class Config:
-        orm_mode = True
+class ProdutoCreateUpdate(BaseModel):
+    nome: str
+    descricao: str
+    preco: float

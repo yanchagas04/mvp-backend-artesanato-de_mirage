@@ -4,7 +4,7 @@ CREATE TABLE "Artesao" (
     "nome" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "senha" TEXT NOT NULL,
-    "data_cadastro" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "dataCadastro" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CreateTable
@@ -13,8 +13,9 @@ CREATE TABLE "Produto" (
     "nome" TEXT NOT NULL,
     "descricao" TEXT NOT NULL,
     "preco" REAL NOT NULL,
-    "artesao_id" INTEGER NOT NULL,
-    "data_cadastro" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "dataCadastro" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "artesaoId" INTEGER NOT NULL,
+    CONSTRAINT "Produto_artesaoId_fkey" FOREIGN KEY ("artesaoId") REFERENCES "Artesao" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex

@@ -1,47 +1,66 @@
-from pydantic import BaseModel
-from src.config.prisma.prismaClient import client as prisma
+from src.config.config import prisma
 from src.models.produto.produtoModel import ProdutoCreateUpdate, Produto
+from typing import List
 
 class produtoController:
 
-    async def adicionar(self, data: ProdutoCreateUpdate) -> Produto:
+    @staticmethod
+    async def adicionarPorArtesao(artesaoId: int,data: ProdutoCreateUpdate) -> Produto:
         try:
-            produto = await prisma.produto.create(data=data)
+            await prisma.connect()
+            produto = await prisma.produto.create(
+                data={
+                    "nome": data.nome,
+                    "descricao": data.descricao,
+                    "preco": data.preco,
+                    "artesaoId": artesaoId
+                }
+            )
+            await prisma.disconnect()
             return produto
         except Exception as e:
             raise e
     
-    async def atualizar(self, id: int, data: ProdutoCreateUpdate) -> Produto:
+    @staticmethod
+    async def atualizar(id: int, data: ProdutoCreateUpdate) -> Produto:
         try:
-            produto = await prisma.produto.update(where={"id": id}, data=data)
+            await prisma.connect()
+            produto = await prisma.produto.update(where={"id": id}, data={
+                "nome": data.nome,
+                "descricao": data.descricao,
+                "preco": data.preco
+            })
+            await prisma.disconnect()
             return produto
         except Exception as e:
             raise e
         
-    async def deletar(self, id: int) -> Produto:
+    @staticmethod
+    async def deletar(id: int) -> Produto:
         try:
+            await prisma.connect()
             produto = await prisma.produto.delete(where={"id": id})
+            await prisma.disconnect()
             return produto
         except Exception as e:
             raise e
         
-    async def listar(self) -> list[Produto]:
+    @staticmethod
+    async def listar() -> List[Produto]:
         try:
+            await prisma.connect()
             produtos = await prisma.produto.find_many()
+            await prisma.disconnect()
             return produtos
         except Exception as e:
             raise e
-        
-    async def buscar(self, id: int) -> Produto:
+    
+    @staticmethod
+    async def listarPorArtesao(id: int) -> List[Produto]:
         try:
-            produto = await prisma.produto.find_unique(where={"id": id})
-            return produto
-        except Exception as e:
-            raise e
-        
-    async def buscarPorArtesao(self, id: int) -> list[Produto]:
-        try:
-            produtos = await prisma.produto.find_many(where={"artesao_id": id})
+            await prisma.connect()
+            produtos = await prisma.produto.find_many(where={"artesaoId": id})
+            await prisma.disconnect()
             return produtos
         except Exception as e:
             raise e

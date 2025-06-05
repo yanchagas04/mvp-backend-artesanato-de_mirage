@@ -1,4 +1,5 @@
 .env
+lib
 prisma/database
 prisma/client
 __pycache__/

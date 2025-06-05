@@ -1135,7 +1135,7 @@ DecimalListUpdate = Union[
 class ArtesaoOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the Artesao create method"""
     id: _int
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
     produtos: 'ProdutoCreateManyNestedWithoutRelationsInput'
 
 
@@ -1152,7 +1152,7 @@ class ArtesaoCreateInput(ArtesaoOptionalCreateInput):
 class ArtesaoOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the Artesao create method, without relations"""
     id: _int
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
 
 
 class ArtesaoCreateWithoutRelationsInput(ArtesaoOptionalCreateWithoutRelationsInput):
@@ -1204,7 +1204,7 @@ class ArtesaoUpdateInput(TypedDict, total=False):
     nome: _str
     email: _str
     senha: _str
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
     produtos: 'ProdutoUpdateManyWithoutRelationsInput'
 
 
@@ -1214,7 +1214,7 @@ class ArtesaoUpdateManyMutationInput(TypedDict, total=False):
     nome: _str
     email: _str
     senha: _str
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
 
 
 class ArtesaoUpdateManyWithoutRelationsInput(TypedDict, total=False):
@@ -1281,10 +1281,10 @@ _Artesao_senha_OrderByInput = TypedDict(
     total=True
 )
 
-_Artesao_data_cadastro_OrderByInput = TypedDict(
-    '_Artesao_data_cadastro_OrderByInput',
+_Artesao_dataCadastro_OrderByInput = TypedDict(
+    '_Artesao_dataCadastro_OrderByInput',
     {
-        'data_cadastro': 'SortOrder',
+        'dataCadastro': 'SortOrder',
     },
     total=True
 )
@@ -1294,7 +1294,7 @@ ArtesaoOrderByInput = Union[
     '_Artesao_nome_OrderByInput',
     '_Artesao_email_OrderByInput',
     '_Artesao_senha_OrderByInput',
-    '_Artesao_data_cadastro_OrderByInput',
+    '_Artesao_dataCadastro_OrderByInput',
 ]
 
 
@@ -1437,22 +1437,22 @@ class FindManyArtesaoArgsFromArtesaoRecursive4(TypedDict, total=False):
 
 class ProdutoIncludeFromArtesao(TypedDict, total=False):
     """Relational arguments for Artesao"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromArtesaoRecursive1']
+    artesao: Union[bool, 'ArtesaoArgsFromArtesaoRecursive1']
 
 
 class ProdutoIncludeFromArtesaoRecursive1(TypedDict, total=False):
     """Relational arguments for Artesao"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromArtesaoRecursive2']
+    artesao: Union[bool, 'ArtesaoArgsFromArtesaoRecursive2']
 
 
 class ProdutoIncludeFromArtesaoRecursive2(TypedDict, total=False):
     """Relational arguments for Artesao"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromArtesaoRecursive3']
+    artesao: Union[bool, 'ArtesaoArgsFromArtesaoRecursive3']
 
 
 class ProdutoIncludeFromArtesaoRecursive3(TypedDict, total=False):
     """Relational arguments for Artesao"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromArtesaoRecursive4']
+    artesao: Union[bool, 'ArtesaoArgsFromArtesaoRecursive4']
 
 
 class ProdutoIncludeFromArtesaoRecursive4(TypedDict, total=False):
@@ -1552,7 +1552,7 @@ class ArtesaoWhereInput(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     email: Union[_str, 'types.StringFilter']
     senha: Union[_str, 'types.StringFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
     produtos: 'ProdutoListRelationFilter'
 
     # should be noted that AND and NOT should be Union['ArtesaoWhereInputRecursive1', List['ArtesaoWhereInputRecursive1']]
@@ -1568,7 +1568,7 @@ class ArtesaoWhereInputRecursive1(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     email: Union[_str, 'types.StringFilter']
     senha: Union[_str, 'types.StringFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
     produtos: 'ProdutoListRelationFilter'
 
     # should be noted that AND and NOT should be Union['ArtesaoWhereInputRecursive2', List['ArtesaoWhereInputRecursive2']]
@@ -1584,7 +1584,7 @@ class ArtesaoWhereInputRecursive2(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     email: Union[_str, 'types.StringFilter']
     senha: Union[_str, 'types.StringFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
     produtos: 'ProdutoListRelationFilter'
 
     # should be noted that AND and NOT should be Union['ArtesaoWhereInputRecursive3', List['ArtesaoWhereInputRecursive3']]
@@ -1600,7 +1600,7 @@ class ArtesaoWhereInputRecursive3(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     email: Union[_str, 'types.StringFilter']
     senha: Union[_str, 'types.StringFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
     produtos: 'ProdutoListRelationFilter'
 
     # should be noted that AND and NOT should be Union['ArtesaoWhereInputRecursive4', List['ArtesaoWhereInputRecursive4']]
@@ -1616,7 +1616,7 @@ class ArtesaoWhereInputRecursive4(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     email: Union[_str, 'types.StringFilter']
     senha: Union[_str, 'types.StringFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
     produtos: 'ProdutoListRelationFilter'
 
 
@@ -1632,7 +1632,7 @@ class ArtesaoScalarWhereWithAggregatesInput(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     email: Union[_str, 'types.StringWithAggregatesFilter']
     senha: Union[_str, 'types.StringWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
 
     AND: List['ArtesaoScalarWhereWithAggregatesInputRecursive1']
     OR: List['ArtesaoScalarWhereWithAggregatesInputRecursive1']
@@ -1645,7 +1645,7 @@ class ArtesaoScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     email: Union[_str, 'types.StringWithAggregatesFilter']
     senha: Union[_str, 'types.StringWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
 
     AND: List['ArtesaoScalarWhereWithAggregatesInputRecursive2']
     OR: List['ArtesaoScalarWhereWithAggregatesInputRecursive2']
@@ -1658,7 +1658,7 @@ class ArtesaoScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     email: Union[_str, 'types.StringWithAggregatesFilter']
     senha: Union[_str, 'types.StringWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
 
     AND: List['ArtesaoScalarWhereWithAggregatesInputRecursive3']
     OR: List['ArtesaoScalarWhereWithAggregatesInputRecursive3']
@@ -1671,7 +1671,7 @@ class ArtesaoScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     email: Union[_str, 'types.StringWithAggregatesFilter']
     senha: Union[_str, 'types.StringWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
 
     AND: List['ArtesaoScalarWhereWithAggregatesInputRecursive4']
     OR: List['ArtesaoScalarWhereWithAggregatesInputRecursive4']
@@ -1684,7 +1684,7 @@ class ArtesaoScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     email: Union[_str, 'types.StringWithAggregatesFilter']
     senha: Union[_str, 'types.StringWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
 
 
 
@@ -1693,7 +1693,7 @@ class ArtesaoGroupByOutput(TypedDict, total=False):
     nome: _str
     email: _str
     senha: _str
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
     _sum: 'ArtesaoSumAggregateOutput'
     _avg: 'ArtesaoAvgAggregateOutput'
     _min: 'ArtesaoMinAggregateOutput'
@@ -1717,7 +1717,7 @@ class ArtesaoScalarAggregateOutput(TypedDict, total=False):
     nome: _str
     email: _str
     senha: _str
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
 
 
 ArtesaoMinAggregateOutput = ArtesaoScalarAggregateOutput
@@ -1730,7 +1730,7 @@ class ArtesaoMaxAggregateInput(TypedDict, total=False):
     nome: bool
     email: bool
     senha: bool
-    data_cadastro: bool
+    dataCadastro: bool
 
 
 class ArtesaoMinAggregateInput(TypedDict, total=False):
@@ -1739,7 +1739,7 @@ class ArtesaoMinAggregateInput(TypedDict, total=False):
     nome: bool
     email: bool
     senha: bool
-    data_cadastro: bool
+    dataCadastro: bool
 
 
 class ArtesaoNumberAggregateInput(TypedDict, total=False):
@@ -1758,7 +1758,7 @@ ArtesaoCountAggregateInput = TypedDict(
         'nome': bool,
         'email': bool,
         'senha': bool,
-        'data_cadastro': bool,
+        'dataCadastro': bool,
         '_all': bool,
     },
     total=False,
@@ -1771,7 +1771,7 @@ ArtesaoCountAggregateOutput = TypedDict(
         'nome': int,
         'email': int,
         'senha': int,
-        'data_cadastro': int,
+        'dataCadastro': int,
         '_all': int,
     },
     total=False,
@@ -1783,7 +1783,7 @@ ArtesaoKeys = Literal[
     'nome',
     'email',
     'senha',
-    'data_cadastro',
+    'dataCadastro',
     'produtos',
 ]
 ArtesaoScalarFieldKeys = Literal[
@@ -1791,7 +1791,7 @@ ArtesaoScalarFieldKeys = Literal[
     'nome',
     'email',
     'senha',
-    'data_cadastro',
+    'dataCadastro',
 ]
 ArtesaoScalarFieldKeysT = TypeVar('ArtesaoScalarFieldKeysT', bound=ArtesaoScalarFieldKeys)
 
@@ -1804,8 +1804,9 @@ ArtesaoRelationalFieldKeys = Literal[
 class ProdutoOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the Produto create method"""
     id: _int
-    data_cadastro: datetime.datetime
-    Artesao: 'ArtesaoCreateManyNestedWithoutRelationsInput'
+    dataCadastro: datetime.datetime
+    artesaoId: _int
+    artesao: 'ArtesaoCreateNestedWithoutRelationsInput'
 
 
 class ProdutoCreateInput(ProdutoOptionalCreateInput):
@@ -1821,7 +1822,8 @@ class ProdutoCreateInput(ProdutoOptionalCreateInput):
 class ProdutoOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the Produto create method, without relations"""
     id: _int
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
+    artesaoId: _int
 
 
 class ProdutoCreateWithoutRelationsInput(ProdutoOptionalCreateWithoutRelationsInput):
@@ -1862,8 +1864,8 @@ class ProdutoUpdateInput(TypedDict, total=False):
     nome: _str
     descricao: _str
     preco: Union[AtomicFloatInput, _float]
-    data_cadastro: datetime.datetime
-    Artesao: 'ArtesaoUpdateManyWithoutRelationsInput'
+    dataCadastro: datetime.datetime
+    artesao: 'ArtesaoUpdateOneWithoutRelationsInput'
 
 
 class ProdutoUpdateManyMutationInput(TypedDict, total=False):
@@ -1872,7 +1874,7 @@ class ProdutoUpdateManyMutationInput(TypedDict, total=False):
     nome: _str
     descricao: _str
     preco: Union[AtomicFloatInput, _float]
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
 
 
 class ProdutoUpdateManyWithoutRelationsInput(TypedDict, total=False):
@@ -1939,10 +1941,18 @@ _Produto_preco_OrderByInput = TypedDict(
     total=True
 )
 
-_Produto_data_cadastro_OrderByInput = TypedDict(
-    '_Produto_data_cadastro_OrderByInput',
+_Produto_dataCadastro_OrderByInput = TypedDict(
+    '_Produto_dataCadastro_OrderByInput',
     {
-        'data_cadastro': 'SortOrder',
+        'dataCadastro': 'SortOrder',
+    },
+    total=True
+)
+
+_Produto_artesaoId_OrderByInput = TypedDict(
+    '_Produto_artesaoId_OrderByInput',
+    {
+        'artesaoId': 'SortOrder',
     },
     total=True
 )
@@ -1952,7 +1962,8 @@ ProdutoOrderByInput = Union[
     '_Produto_nome_OrderByInput',
     '_Produto_descricao_OrderByInput',
     '_Produto_preco_OrderByInput',
-    '_Produto_data_cadastro_OrderByInput',
+    '_Produto_dataCadastro_OrderByInput',
+    '_Produto_artesaoId_OrderByInput',
 ]
 
 
@@ -1983,7 +1994,7 @@ class ProdutoListRelationFilter(TypedDict, total=False):
 
 class ProdutoInclude(TypedDict, total=False):
     """Produto relational arguments"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromProduto']
+    artesao: Union[bool, 'ArtesaoArgsFromProduto']
 
 
     
@@ -2095,22 +2106,22 @@ class FindManyArtesaoArgsFromProdutoRecursive4(TypedDict, total=False):
 
 class ProdutoIncludeFromProduto(TypedDict, total=False):
     """Relational arguments for Produto"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromProdutoRecursive1']
+    artesao: Union[bool, 'ArtesaoArgsFromProdutoRecursive1']
 
 
 class ProdutoIncludeFromProdutoRecursive1(TypedDict, total=False):
     """Relational arguments for Produto"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromProdutoRecursive2']
+    artesao: Union[bool, 'ArtesaoArgsFromProdutoRecursive2']
 
 
 class ProdutoIncludeFromProdutoRecursive2(TypedDict, total=False):
     """Relational arguments for Produto"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromProdutoRecursive3']
+    artesao: Union[bool, 'ArtesaoArgsFromProdutoRecursive3']
 
 
 class ProdutoIncludeFromProdutoRecursive3(TypedDict, total=False):
     """Relational arguments for Produto"""
-    Artesao: Union[bool, 'FindManyArtesaoArgsFromProdutoRecursive4']
+    artesao: Union[bool, 'ArtesaoArgsFromProdutoRecursive4']
 
 
 class ProdutoIncludeFromProdutoRecursive4(TypedDict, total=False):
@@ -2210,8 +2221,9 @@ class ProdutoWhereInput(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     descricao: Union[_str, 'types.StringFilter']
     preco: Union[_float, 'types.FloatFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
-    Artesao: 'ArtesaoListRelationFilter'
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    artesaoId: Union[_int, 'types.IntFilter']
+    artesao: 'ArtesaoRelationFilter'
 
     # should be noted that AND and NOT should be Union['ProdutoWhereInputRecursive1', List['ProdutoWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -2226,8 +2238,9 @@ class ProdutoWhereInputRecursive1(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     descricao: Union[_str, 'types.StringFilter']
     preco: Union[_float, 'types.FloatFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
-    Artesao: 'ArtesaoListRelationFilter'
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    artesaoId: Union[_int, 'types.IntFilter']
+    artesao: 'ArtesaoRelationFilter'
 
     # should be noted that AND and NOT should be Union['ProdutoWhereInputRecursive2', List['ProdutoWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -2242,8 +2255,9 @@ class ProdutoWhereInputRecursive2(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     descricao: Union[_str, 'types.StringFilter']
     preco: Union[_float, 'types.FloatFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
-    Artesao: 'ArtesaoListRelationFilter'
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    artesaoId: Union[_int, 'types.IntFilter']
+    artesao: 'ArtesaoRelationFilter'
 
     # should be noted that AND and NOT should be Union['ProdutoWhereInputRecursive3', List['ProdutoWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -2258,8 +2272,9 @@ class ProdutoWhereInputRecursive3(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     descricao: Union[_str, 'types.StringFilter']
     preco: Union[_float, 'types.FloatFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
-    Artesao: 'ArtesaoListRelationFilter'
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    artesaoId: Union[_int, 'types.IntFilter']
+    artesao: 'ArtesaoRelationFilter'
 
     # should be noted that AND and NOT should be Union['ProdutoWhereInputRecursive4', List['ProdutoWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -2274,8 +2289,9 @@ class ProdutoWhereInputRecursive4(TypedDict, total=False):
     nome: Union[_str, 'types.StringFilter']
     descricao: Union[_str, 'types.StringFilter']
     preco: Union[_float, 'types.FloatFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeFilter']
-    Artesao: 'ArtesaoListRelationFilter'
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeFilter']
+    artesaoId: Union[_int, 'types.IntFilter']
+    artesao: 'ArtesaoRelationFilter'
 
 
 
@@ -2290,7 +2306,8 @@ class ProdutoScalarWhereWithAggregatesInput(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     descricao: Union[_str, 'types.StringWithAggregatesFilter']
     preco: Union[_float, 'types.FloatWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    artesaoId: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['ProdutoScalarWhereWithAggregatesInputRecursive1']
     OR: List['ProdutoScalarWhereWithAggregatesInputRecursive1']
@@ -2303,7 +2320,8 @@ class ProdutoScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     descricao: Union[_str, 'types.StringWithAggregatesFilter']
     preco: Union[_float, 'types.FloatWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    artesaoId: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['ProdutoScalarWhereWithAggregatesInputRecursive2']
     OR: List['ProdutoScalarWhereWithAggregatesInputRecursive2']
@@ -2316,7 +2334,8 @@ class ProdutoScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     descricao: Union[_str, 'types.StringWithAggregatesFilter']
     preco: Union[_float, 'types.FloatWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    artesaoId: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['ProdutoScalarWhereWithAggregatesInputRecursive3']
     OR: List['ProdutoScalarWhereWithAggregatesInputRecursive3']
@@ -2329,7 +2348,8 @@ class ProdutoScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     descricao: Union[_str, 'types.StringWithAggregatesFilter']
     preco: Union[_float, 'types.FloatWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    artesaoId: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['ProdutoScalarWhereWithAggregatesInputRecursive4']
     OR: List['ProdutoScalarWhereWithAggregatesInputRecursive4']
@@ -2342,7 +2362,8 @@ class ProdutoScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     nome: Union[_str, 'types.StringWithAggregatesFilter']
     descricao: Union[_str, 'types.StringWithAggregatesFilter']
     preco: Union[_float, 'types.FloatWithAggregatesFilter']
-    data_cadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    dataCadastro: Union[datetime.datetime, 'types.DateTimeWithAggregatesFilter']
+    artesaoId: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
@@ -2351,7 +2372,8 @@ class ProdutoGroupByOutput(TypedDict, total=False):
     nome: _str
     descricao: _str
     preco: _float
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
+    artesaoId: _int
     _sum: 'ProdutoSumAggregateOutput'
     _avg: 'ProdutoAvgAggregateOutput'
     _min: 'ProdutoMinAggregateOutput'
@@ -2363,12 +2385,14 @@ class ProdutoAvgAggregateOutput(TypedDict, total=False):
     """Produto output for aggregating averages"""
     id: float
     preco: float
+    artesaoId: float
 
 
 class ProdutoSumAggregateOutput(TypedDict, total=False):
     """Produto output for aggregating sums"""
     id: _int
     preco: _float
+    artesaoId: _int
 
 
 class ProdutoScalarAggregateOutput(TypedDict, total=False):
@@ -2377,7 +2401,8 @@ class ProdutoScalarAggregateOutput(TypedDict, total=False):
     nome: _str
     descricao: _str
     preco: _float
-    data_cadastro: datetime.datetime
+    dataCadastro: datetime.datetime
+    artesaoId: _int
 
 
 ProdutoMinAggregateOutput = ProdutoScalarAggregateOutput
@@ -2390,7 +2415,8 @@ class ProdutoMaxAggregateInput(TypedDict, total=False):
     nome: bool
     descricao: bool
     preco: bool
-    data_cadastro: bool
+    dataCadastro: bool
+    artesaoId: bool
 
 
 class ProdutoMinAggregateInput(TypedDict, total=False):
@@ -2399,13 +2425,15 @@ class ProdutoMinAggregateInput(TypedDict, total=False):
     nome: bool
     descricao: bool
     preco: bool
-    data_cadastro: bool
+    dataCadastro: bool
+    artesaoId: bool
 
 
 class ProdutoNumberAggregateInput(TypedDict, total=False):
     """Produto input for aggregating numbers"""
     id: bool
     preco: bool
+    artesaoId: bool
 
 
 ProdutoAvgAggregateInput = ProdutoNumberAggregateInput
@@ -2419,7 +2447,8 @@ ProdutoCountAggregateInput = TypedDict(
         'nome': bool,
         'descricao': bool,
         'preco': bool,
-        'data_cadastro': bool,
+        'dataCadastro': bool,
+        'artesaoId': bool,
         '_all': bool,
     },
     total=False,
@@ -2432,7 +2461,8 @@ ProdutoCountAggregateOutput = TypedDict(
         'nome': int,
         'descricao': int,
         'preco': int,
-        'data_cadastro': int,
+        'dataCadastro': int,
+        'artesaoId': int,
         '_all': int,
     },
     total=False,
@@ -2444,20 +2474,22 @@ ProdutoKeys = Literal[
     'nome',
     'descricao',
     'preco',
-    'data_cadastro',
-    'Artesao',
+    'dataCadastro',
+    'artesaoId',
+    'artesao',
 ]
 ProdutoScalarFieldKeys = Literal[
     'id',
     'nome',
     'descricao',
     'preco',
-    'data_cadastro',
+    'dataCadastro',
+    'artesaoId',
 ]
 ProdutoScalarFieldKeysT = TypeVar('ProdutoScalarFieldKeysT', bound=ProdutoScalarFieldKeys)
 
 ProdutoRelationalFieldKeys = Literal[
-        'Artesao',
+        'artesao',
     ]
 
 
