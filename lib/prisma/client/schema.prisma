@@ -25,5 +25,5 @@ model Produto {
   preco        Float
   dataCadastro DateTime @default(now())
   artesaoId    Int
-  artesao      Artesao  @relation(fields: [artesaoId], references: [id])
+  artesao      Artesao  @relation(fields: [artesaoId], references: [id], onDelete: Cascade)
 }

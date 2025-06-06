@@ -1,3 +1,4 @@
+from fastapi import HTTPException, status
 from src.config.config import prisma
 from typing import List
 from src.models.artesao.artesaoModel import ArtesaoCreateUpdate, Artesao
@@ -12,7 +13,8 @@ class artesaoController():
             await prisma.disconnect()
             return artesoes
         except Exception as e:
-            raise e
+            print(e)
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao listar usuários")
     
     @staticmethod
     async def buscar(id: int) -> Artesao:
@@ -22,4 +24,5 @@ class artesaoController():
             await prisma.disconnect()
             return artesao
         except Exception as e:
-            raise e
+            print(e)
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao buscar usuário")
