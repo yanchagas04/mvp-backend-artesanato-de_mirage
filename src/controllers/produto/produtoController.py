@@ -20,6 +20,7 @@ class produtoController:
             await prisma.disconnect()
             return produto
         except Exception as e:
+            await prisma.disconnect()
             print(e)
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao cadastrar usuário")
         
@@ -31,5 +32,6 @@ class produtoController:
             await prisma.disconnect()
             return produtos
         except Exception as e:
+            await prisma.disconnect()
             print(e)
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao listar usuários")

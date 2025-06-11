@@ -4,16 +4,14 @@ from src.routes.auth.authRouter import authRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-app.middleware(
-    CORSMiddleware(
-        app=app,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    ),
-)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(produtoRouter)
 app.include_router(authRouter)
 
