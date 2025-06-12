@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from src.controllers.auth.authController import authController
-from src.models.artesao.artesaoModel import ArtesaoLogin, ArtesaoCreateUpdate
+from src.models.artesao.artesaoModel import ArtesaoLogin, ArtesaoCreateUpdate, Artesao
 
 authRouter = APIRouter(
     prefix='/auth',
@@ -15,5 +15,5 @@ authRouter = APIRouter(
 @authRouter.post('/register', response_model=ArtesaoCreateUpdate, tags=['Auth'], description='Register', operation_id='register', status_code=201)
 async def register(data: ArtesaoCreateUpdate): return await authController.register(data)
 
-@authRouter.post('/login', response_model=ArtesaoCreateUpdate, tags=['Auth'], description='Login', operation_id='login', status_code=200)
+@authRouter.post('/login', response_model=Artesao, tags=['Auth'], description='Login', operation_id='login', status_code=200)
 async def login(data: ArtesaoLogin): return await authController.login(data)

@@ -25,10 +25,10 @@ class produtoController:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao cadastrar usuário")
         
     @staticmethod
-    async def listar() -> List[Produto]:
+    async def listar(artesaoId: int) -> List[Produto]:
         try:
             await prisma.connect()
-            produtos = await prisma.produto.find_many()
+            produtos = await prisma.produto.find_many(where={"artesaoId": artesaoId})
             await prisma.disconnect()
             return produtos
         except Exception as e:
