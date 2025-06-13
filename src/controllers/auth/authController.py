@@ -48,4 +48,6 @@ class authController:
         except Exception as e:
             await prisma.disconnect()
             print(e)
+            if (e.__str__() == "404: Usuário não encontrado"):
+                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado")
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Erro ao logar usuário")
